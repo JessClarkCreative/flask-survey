@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block title %}
+Question #{{ question_num }}
+{% endblock %}
 {% block content %}
 <h1>{{ question.question }}</h1>
 <form action="/answer" method="POST">
@@ -8,6 +11,9 @@
         {{ choice }}
     </p>
     {% endfor %}
+    {% if question.allow_text %}
+  <textarea name="text"></textarea>
+  {% endif %}
     <button>Continue</button>
 </form>
 {% endblock %}
